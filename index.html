@@ -64,13 +64,13 @@
                             </div>
                         </div> -->
                         <div class="user" v-for="(item, index) in contacts" :key="item">
-                            <img class="profile" src="item.avatar" alt="">
+                            <img class="profile" :src="'assets/'+item.avatar" alt="profile">
                             <div class="profile-info">
                                 <div class="user-name">
-                                    Michele
+                                    {{ item.name }}
                                 </div>
                                 <div class="last-message">
-                                    Bella ciao
+                                    {{ item.messages[messages.length - 1].message }}
                                 </div>
                                 <div class="user-last-connect">
                                     12:00
