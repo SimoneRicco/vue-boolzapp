@@ -40,7 +40,8 @@ img.profile{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--default-space-h) var(--default-space-w);
+    padding: 0 var(--default-space-w);
+    height: 60px;
 }
 .user-profile{
     display: flex;
@@ -133,5 +134,25 @@ img.profile{
 .chat-container{
     width: 75%;
     height: 100%;
-    background-color: bisque;
+}
+.chat{
+    background-image: url("img/mine.jpg");
+    height: calc(100% - 120px);
+}
+.digital-keyboard{
+    height: 60px;
+    background-color: #f3f4ed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-inline: var(--default-space-w);
+}
+.digital-keyboard i{
+    font-size: 1.5rem;
+    color: gray;
+}
+.my-chat{
+    width: 80%;
+    padding: 10px var(--default-space-w);
+    border: 0;
 }
