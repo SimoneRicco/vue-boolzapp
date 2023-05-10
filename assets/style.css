@@ -13,7 +13,7 @@ body{
     font-family: 'Varela Round', sans-serif;
 }
 .container{
-    background: linear-gradient(180deg, #009e10 15%, white 0);
+    background: linear-gradient(180deg, #14691d 15%, white 0);
     height: 100vh;
 }
 #app{
@@ -138,6 +138,10 @@ img.profile{
 .chat{
     background-image: url("img/mine.jpg");
     height: calc(100% - 120px);
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    padding: 1.5rem 3rem 0;
 }
 .digital-keyboard{
     height: 60px;
@@ -155,4 +159,25 @@ img.profile{
     width: 80%;
     padding: 10px var(--default-space-w);
     border: 0;
+}
+/* messages */
+.send, .recived{
+    padding: 10px 10px;
+    border-radius: 10px;
+    width: 200px;
+    position: relative;
+}
+.send{
+    background-color: rgb(145, 215, 101);
+    align-self: flex-end;
+}
+.recived{
+    background-color: white;
+}
+.message-date{
+    font-size: .6rem;
+    color: gray;
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
 }
