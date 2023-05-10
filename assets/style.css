@@ -1,0 +1,68 @@
+/* reset */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+/* general settings */
+:root{
+    --default-space-w: 15px;
+    --default-space-h: 5px
+}
+body{
+    font-family: 'Varela Round', sans-serif;
+}
+.container{
+    background: linear-gradient(180deg, #009e10 15%, white 0);
+    height: 100vh;
+}
+#app{
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.boolzapp{
+    width: 80%;
+    height: 90%;
+    display: flex;
+}
+img.profile{
+    border-radius: 50%;
+    width: 50px;
+}
+.last-connect{
+    font-size: .7rem;
+    color: gray;
+}
+/* Top side */
+.top-bool{
+    background-color: lightgrey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--default-space-h) var(--default-space-w);
+}
+.user-profile{
+    display: flex;
+    align-items: center;
+}
+.top-settings{
+    display: flex;
+    gap: 1rem;
+    color: gray;
+}
+.top-profile-info{
+    padding-left: 1rem;
+}
+/* contact list */
+.contacts{
+    width: 35%;
+    background-color: aqua;
+    height: 100%;
+}
+/* chat container */
+.chat-container{
+    width: 75%;
+    height: 100%;
+    background-color: bisque;
+}
