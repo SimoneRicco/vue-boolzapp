@@ -54,11 +54,80 @@ img.profile{
 .top-profile-info{
     padding-left: 1rem;
 }
+/* notifications */
+.notifications{
+    background-color: deepskyblue;
+    display: flex;
+    align-items: center;
+    padding: 10px var(--default-space-w);
+}
+.bell{
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+}
+.bell i{
+    font-size: 1.5rem;
+    color: deepskyblue;
+}
+.not-info{
+    padding-left: 1rem;
+}
+.not-info a{
+    font-size: .7rem;
+    text-decoration: underline;
+    color: rgb(0, 75, 98);
+}
 /* contact list */
 .contacts{
     width: 35%;
-    background-color: aqua;
     height: 100%;
+}
+.search-contact{
+    padding: var(--default-space-h) var(--default-space-w);
+    display: flex;
+    background-color: rgb(244, 244, 244);
+}
+.search-contact input{
+    width: 100%;
+    padding: 7px 10px;
+    border-radius: 0 2px 2px 0;
+}
+.search-contact button{
+    background-color: white;
+    border-radius: 2px 0 0 2px;
+    padding: 7px 20px;
+    color: gray;
+}
+.search-contact button, .search-contact input{
+    box-shadow: 0 0 1px grey;
+    border: 0;
+}
+.profile-info{
+    padding-left: 1rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.last-message, .user-last-connect{
+    font-size: .7rem;
+    color: gray;
+}
+.user-last-connect{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.user{
+    padding: var(--default-space-h) var(--default-space-w);
+    display: flex;
+    border-bottom: 1px solid lightgray;
+}
+.user:hover{
+    background-color: lightgray;
 }
 /* chat container */
 .chat-container{
