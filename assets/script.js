@@ -163,12 +163,29 @@ const app = Vue.createApp({
                         }
                     ],
                 }
-            ]
-            
+            ],
+            activeChat: 0,
+            msg: "",
         }
     },
     methods: {
-
+        changeChat(i) {
+            this.activeChat = i;
+        },
+        sendMsg() {//TODO: Oggetto date current date
+            console.log("errore?")
+            const newMsg = { date: "la/mia/data", message: this.msg, status: 'sent' };
+            msg = "";//non pulisce come dovrebbe
+            this.contacts[this.activeChat].messages.push(newMsg);
+            console.log(this.contacts[this.activeChat].messages)
+            setTimeout(this.botAnswer, 1000)
+            console.log(this.contacts[this.activeChat].messages)
+        },
+        botAnswer() {
+            const answer = { date: "la/mia/data", message: "ok", status: 'received' };
+            console.log(answer)
+            this.contacts[this.activeChat].messages.push(answer);
+        }
     },
 })
 app.mount("#app");

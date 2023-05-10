@@ -49,21 +49,7 @@
                         <input type="text" placeholder="Cerca o inizia una nuova chat">
                     </div>
                     <div class="contact-list">
-                        <!-- <div class="user">
-                            <img class="profile" src="assets/img/avatar_1.jpg" alt="">
-                            <div class="profile-info">
-                                <div class="user-name">
-                                    Michele
-                                </div>
-                                <div class="last-message">
-                                    Bella ciao
-                                </div>
-                                <div class="user-last-connect">
-                                    12:00
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class="user" v-for="(item, index) in contacts" :key="item">
+                        <div class="user" v-for="(item, index) in contacts" :key="item" @click="changeChat(index)">
                             <img class="profile" :src="'assets/'+item.avatar" alt="profile">
                             <div class="profile-info">
                                 <div class="user-name">
@@ -97,18 +83,19 @@
                         </div>
                     </div>
                     <div class="chat">
-                        <div class="send">
-                            Ciao
-                            <span class="message-date">15:00</span>
-                        </div>
-                        <div class="recived">
-                            Ciao a te!!
-                            <span class="message-date">15:00</span>
-                        </div>
+                        <template v-for="(item, index) in contacts" :key="item">
+                            <div class="message" v-for="(msg, i) in item.messages" :key="msg" :class="index == activeChat ? 'visible' : 'invisible', msg.status == 'sent' ? 'send' : 'recived'" >
+                                {{ msg.message }}
+                                <span class="message-date">15:00</span>
+                                <span class="message-settings">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </div>
+                        </template>
                     </div>
                     <div class="digital-keyboard">
                         <i class="fa-regular fa-face-smile"></i>
-                        <input type="text" placeholder="Scrivi un messaggio" class="my-chat">
+                        <input type="text" placeholder="Scrivi un messaggio" class="my-chat" @keyup.enter="sendMsg" v-model="msg">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
                 </section>
