@@ -46,33 +46,35 @@
                         <button>
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search">
                     </div>
                     <div class="contact-list">
-                        <div class="user" v-for="(item, index) in contacts" :key="item" @click="changeChat(index)">
-                            <img class="profile" :src="'assets/'+item.avatar" alt="profile">
-                            <div class="profile-info">
-                                <div class="user-name">
-                                    {{ item.name }}
-                                </div>
-                                <div class="last-message">
-                                    {{ item.messages[item.messages.length - 1].message }}
-                                </div>
-                                <div class="user-last-connect">
-                                    12:00
+                        <template  v-for="(item, index) in contacts" :key="item">
+                            <div class="user" @click="changeChat(index)" v-if="item.name.toLowerCase().includes(search.toLowerCase())">
+                                <img class="profile" :src="'assets/'+item.avatar" alt="profile">
+                                <div class="profile-info">
+                                    <div class="user-name">
+                                        {{ item.name }}
+                                    </div>
+                                    <div class="last-message">
+                                        {{ item.messages[item.messages.length - 1].message }}
+                                    </div>
+                                    <div class="user-last-connect">
+                                        {{ item.messages[item.messages.length - 1].date }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </template>
                     </div>
                 </aside>
                 <section class="chat-container">
                     <div class="top-bool">
                         <div class="user-profile">
-                            <img class="profile" src="assets/img/avatar_1.jpg" alt="">
+                            <img class="profile" :src="'assets/' + contacts[activeChat].avatar" alt="">
                             <div class="top-profile-info">
-                                Sofia
+                                {{ contacts[activeChat].name }}
                                 <div class="last-connect">
-                                    Ultimo accesso oggi alle 12:00
+                                    {{ "Ultimo accesso " + contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date }}
                                 </div>
                             </div>
                         </div>
@@ -86,10 +88,15 @@
                         <template v-for="(item, index) in contacts" :key="item">
                             <div class="message" v-for="(msg, i) in item.messages" :key="msg" :class="index == activeChat ? 'visible' : 'invisible', msg.status == 'sent' ? 'send' : 'recived'" >
                                 {{ msg.message }}
-                                <span class="message-date">15:00</span>
-                                <span class="message-settings">
+                                <span class="message-date">{{ msg.date }}</span>
+                                <span class="message-settings" v-on:click="item.visible = !item.visible">
                                     <i class="fa-solid fa-chevron-down"></i>
-                                </span>
+                                </span> 
+                                <!-- Todo capire quali indici confrontare per far funzionare il tutto nel v-if -->
+                                <!-- <div class="panel" v-if="i == i">
+                                    <div class="p-option">Message Info</div>
+                                    <div class="p-option">Delete Message</div>
+                                </div> -->
                             </div>
                         </template>
                     </div>
@@ -103,6 +110,7 @@
         </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <script src="assets/script.js"></script>
 </body>
 

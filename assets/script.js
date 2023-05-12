@@ -1,7 +1,18 @@
+function addBooleans(c) {
+    // for (let key in c) {
+    // NOT WORKING 
+    //     // console.log(c[key].messages);
+    //     c[key].messages.value = false;
+    //     // console.log(c[key].messages.value)
+    //     // console.log(c);
+    // }
+    // console.log(c);
+    return c;
+}
 const app = Vue.createApp({
     data() {
         return {
-            contacts: [
+            contacts: addBooleans([
                 {
                     name: 'Michele',
                     avatar: './img/avatar_1.jpg',
@@ -163,9 +174,10 @@ const app = Vue.createApp({
                         }
                     ],
                 }
-            ],
+            ]),
             activeChat: 0,
             msg: "",
+            search: "",
         }
     },
     methods: {
@@ -173,19 +185,24 @@ const app = Vue.createApp({
             this.activeChat = i;
         },
         sendMsg() {//TODO: Oggetto date current date
-            console.log("errore?")
-            const newMsg = { date: "la/mia/data", message: this.msg, status: 'sent' };
-            msg = "";//non pulisce come dovrebbe
-            this.contacts[this.activeChat].messages.push(newMsg);
-            console.log(this.contacts[this.activeChat].messages)
-            setTimeout(this.botAnswer, 1000)
-            console.log(this.contacts[this.activeChat].messages)
+            if (this.msg != "") {
+                const newMsg = { date: this.getTime(), message: this.msg, status: 'sent', value: false};
+                this.msg = "";
+                this.contacts[this.activeChat].messages.push(newMsg);
+                setTimeout(this.botAnswer, 1000)
+            }
         },
         botAnswer() {
-            const answer = { date: "la/mia/data", message: "ok", status: 'received' };
+            const answer = { date: this.getTime(), message: "ok", status: 'received' };
             console.log(answer)
             this.contacts[this.activeChat].messages.push(answer);
-        }
+        },
+        getTime(){
+            return luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss');
+        },
+        // changeTime(t){
+        //     return luxon.DateTime.now().toLocaleString(luxon.DateTime.TIME_24_SIMPLE)
+        // }
     },
 })
 app.mount("#app");

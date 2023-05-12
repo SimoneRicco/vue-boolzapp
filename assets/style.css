@@ -1,42 +1,51 @@
 /* reset */
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
+
 /* general settings */
-:root{
+:root {
     --default-space-w: 15px;
     --default-space-h: 5px
 }
-body{
+
+body {
     font-family: 'Varela Round', sans-serif;
 }
-.container{
+
+.container {
     background: linear-gradient(180deg, #14691d 15%, rgb(239, 239, 239) 0);
     height: 100vh;
 }
-#app{
+
+#app {
     height: 100%;
     display: grid;
     place-items: center;
 }
-.boolzapp{
+
+.boolzapp {
     width: 80%;
     height: 90%;
     display: flex;
     box-shadow: 0 0 2px lightgrey;
+    overflow: hidden;
 }
-img.profile{
+
+img.profile {
     border-radius: 50%;
     width: 50px;
 }
-.last-connect{
+
+.last-connect {
     font-size: .7rem;
     color: gray;
 }
+
 /* Top side */
-.top-bool{
+.top-bool {
     background-color: lightgrey;
     display: flex;
     justify-content: space-between;
@@ -44,27 +53,32 @@ img.profile{
     padding: 0 var(--default-space-w);
     height: 60px;
 }
-.user-profile{
+
+.user-profile {
     display: flex;
     align-items: center;
 }
-.top-settings{
+
+.top-settings {
     display: flex;
     gap: 1rem;
     color: gray;
 }
-.top-profile-info{
+
+.top-profile-info {
     padding-left: 1rem;
 }
+
 /* notifications */
-.notifications{
+.notifications {
     background-color: deepskyblue;
     display: flex;
     align-items: center;
     padding: 10px var(--default-space-w);
     height: 80px;
 }
-.bell{
+
+.bell {
     background-color: white;
     border-radius: 50%;
     width: 50px;
@@ -72,77 +86,102 @@ img.profile{
     display: grid;
     place-items: center;
 }
-.bell i{
+
+.bell i {
     font-size: 1.5rem;
     color: deepskyblue;
 }
-.not-info{
+
+.not-info {
     padding-left: 1rem;
 }
-.not-info a{
+
+.not-info a {
     font-size: .7rem;
     text-decoration: underline;
     color: rgb(0, 75, 98);
 }
+
 /* contact list */
-.contacts{
+.contacts {
     width: 35%;
     height: 100%;
 }
-.contact-list{
+
+.contact-list {
     background-color: white;
     height: calc(100% - 60px - 40px - 80px);
 }
-.search-contact{
+
+.search-contact {
     padding: var(--default-space-h) var(--default-space-w);
     display: flex;
     background-color: rgb(244, 244, 244);
     height: 40px;
 }
-.search-contact input{
+
+.search-contact input {
     width: 100%;
     padding: 7px 10px;
     border-radius: 0 2px 2px 0;
 }
-.search-contact button{
+
+.search-contact button {
     background-color: white;
     border-radius: 2px 0 0 2px;
     padding: 7px 20px;
     color: gray;
 }
-.search-contact button, .search-contact input{
+
+.search-contact button,
+.search-contact input {
     box-shadow: 0 0 1px grey;
     border: 0;
 }
-.profile-info{
+
+.profile-info {
     padding-left: 1rem;
     width: 100%;
     height: 100%;
     position: relative;
+    min-width: 0;
 }
-.last-message, .user-last-connect{
+
+.last-message,
+.user-last-connect {
     font-size: .7rem;
     color: gray;
 }
-.user-last-connect{
+
+.last-message {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user-last-connect {
     position: absolute;
     right: 0;
     top: 0;
 }
-.user{
+
+.user {
     padding: var(--default-space-h) var(--default-space-w);
     display: flex;
     border-bottom: 1px solid lightgray;
 }
-.user:hover{
+
+.user:hover {
     background-color: lightgray;
 }
+
 /* chat container */
-.chat-container{
+.chat-container {
     width: 75%;
     height: 100%;
 }
-.chat{
+
+.chat {
     background-image: url("img/mine.jpg");
     height: calc(100% - 120px);
     display: flex;
@@ -151,7 +190,8 @@ img.profile{
     padding: 1.5rem 3rem 0;
     overflow: auto;
 }
-.digital-keyboard{
+
+.digital-keyboard {
     height: 60px;
     background-color: #f3f4ed;
     display: flex;
@@ -159,50 +199,77 @@ img.profile{
     align-items: center;
     padding-inline: var(--default-space-w);
 }
-.digital-keyboard i{
+
+.digital-keyboard i {
     font-size: 1.5rem;
     color: gray;
 }
-.my-chat{
+
+.my-chat {
     width: 80%;
     padding: 10px var(--default-space-w);
     border: 0;
 }
+
 /* messages */
-.message{
+.message {
     padding: 10px 35px 10px 10px;
     border-radius: 10px;
-    /* width: 200px; */
     position: relative;
+    max-width: 300px;
+    word-wrap: break-word;
 }
-.send{
+
+.send {
     background-color: rgb(145, 215, 101);
     align-self: flex-end;
 }
-.recived{
+
+.recived {
     background-color: white;
     align-self: flex-start;
 }
-.message-date{
+
+.message-date {
     font-size: .6rem;
     color: gray;
-    position: absolute;
-    bottom: 2px;
-    right: 5px;
+    line-height: 9px;
+    display: flex;
+    justify-content: flex-end;
 }
-.message-settings{
+
+.message-settings {
     display: none;
     position: absolute;
     top: 5px;
     right: 10px;
     color: gray;
 }
-.message:hover .message-settings{
+
+.message:hover .message-settings {
     display: inline-block;
 }
-.invisible{
+
+.invisible {
     display: none;
 }
-.visible{
+
+.visible {
     display: block;
+}
+
+.panel {
+    background-color: lightgray;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    line-height: 1.5rem;
+}
+
+.p-option {
+    padding: 10px;
+}
+
+.p-option:hover {
+    background-color: rgb(199, 199, 199);
 }
